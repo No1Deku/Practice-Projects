@@ -1,0 +1,53 @@
+Notebook Cell #,Purpose / Step Type,First lines (preview)
+0,Visualization,"import skimpy as sk
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt"
+1,Load data,"data = pd.read_csv(""C:\\Users\\Admin\\Downloads\\archive (17)\\dirty_cafe_sales.csv"")"
+2,Other,sk.skim(data)
+3,Inspect/Overview,data.head(25)
+4,Other,"data.columns = [col.strip().replace("" "",""_"").lower() for col in data.columns]
+data.columns"
+5,"Aggregation/Feature Eng, Cleaning/Transform","for i in data.columns:
+    grouped = data.groupby(i)[i].count()  
+    print(f""Grouping by {i}:"")
+    print(grouped)
+    print(""-"" * 40)"
+6,Other,"nulls = [""ERROR"",""UNKNOWN""]
+data.loc[data['item'].isin(nulls), 'item'] = np.nan
+data.loc[data['payment_method'].isin(nulls), 'payment_method'] = np.nan
+data.loc[data['location'].isin(nulls), 'location'] = np.nan
+data.loc[data['transaction_date'].isin(nulls), 'transaction_date'] = np.nan"
+7,Cleaning/Transform,"data.fillna({
+    'item': ""Other"", 
+    'location': ""Undefined"", 
+    'payment_method': ""Unknown""
+}, inplace=True)"
+8,Cleaning/Transform,"data['transaction_date'] = pd.to_datetime(data['transaction_date'],errors='coerce')"
+9,Cleaning/Transform,"median_date = data['transaction_date'].median()  
+data.fillna({'transaction_date': median_date}, inplace=True)"
+10,Cleaning/Transform,"data = data.dropna(subset=['quantity','price_per_unit'], how='all')
+data = data.dropna(subset=['quantity','total_spent'], how='all')
+data = data.dropna(subset=['total_spent','price_per_unit'], how='all')"
+11,Other,"data['quantity'] = pd.to_numeric(data['quantity'],errors='coerce')
+data['price_per_unit'] = pd.to_numeric(data['price_per_unit'],errors='coerce')
+data['total_spent'] = pd.to_numeric(data['total_spent'],errors='coerce')"
+12,Cleaning/Transform,"data['total_spent'] = data['total_spent'].fillna(data['quantity'] * data['price_per_unit'])
+data['quantity'] = data['quantity'].fillna(data['total_spent'] / data['price_per_unit'])
+data['price_per_unit'] = data['price_per_unit'].fillna(data['total_spent'] / data['quantity'])"
+13,Inspect/Overview,data.head(25)
+14,Visualization,"data.hist(figsize=(12, 8), bins=50, edgecolor=""black"")  
+plt.suptitle(""Distribution of Numeric Features"", fontsize=14)  
+plt.show()"
+15,Visualization,"sns.scatterplot(data=data,x=data['quantity'], y=data['total_spent'],hue = 'item' ,alpha=0.5)  
+plt.title(""Relationship between Quantity & Total_Spent Sold"")  
+plt.xlabel(""Quantity"")  
+plt.ylabel(""Total_Spent"")  
+plt.show()"
+16,"Aggregation/Feature Eng, Cleaning/Transform, Visualization","plt.figure(figsize=(8, 5))  
+sns.boxplot(y=data.groupby('item')['total_spent'].sum())  
+plt.title(""Boxplot of Price: Detecting Outliers"")  
+plt.show()"
+17,Visualization,"corr_matrix = data.corr(numeric_only=True)
+sns.heatmap(corr_matrix, annot=True, cmap=""YlGnBu"")"
