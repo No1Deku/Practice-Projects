@@ -7,7 +7,7 @@ Errors were introduced during **manual data entry**, resulting in merged attribu
 The objective is to **clean, restructure, and validate** the dataset, ensuring reliable student records for reporting and analysis.
 
 ---
-
+        
 ## 🚨 Problem Statement
 Student records contained:
 - Multiple attributes merged into a single field.  
