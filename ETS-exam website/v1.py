@@ -17,8 +17,8 @@ def get_img_as_base64(file_path: str) -> str | None:
             return base64.b64encode(f.read()).decode()
     return None
 
-background_path = "background.jpg"
-background_secondary = "background_1.jpg"
+background_path = r"ETS-exam website/background.jpg"
+background_secondary = r"ETS-exam website/background_1.jpg"
 
 backgr = get_img_as_base64(background_path)
 backgr2 = get_img_as_base64(background_secondary)
@@ -126,7 +126,7 @@ st.markdown(f"""
 # LOGO BANNER
 # ----------------------------------------------------
 try:
-    logo = Image.open("logo.png")
+    logo = Image.open("ETS-exam website/image.jpg")
     st.markdown("<div class='logo-banner'>", unsafe_allow_html=True)
     st.image(logo, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
