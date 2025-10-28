@@ -126,7 +126,7 @@ st.markdown(f"""
 # LOGO BANNER
 # ----------------------------------------------------
 try:
-    logo = Image.open("ETS-exam website/image.jpg")
+    logo = Image.open("ETS-exam website/Logo.png")
     st.markdown("<div class='logo-banner'>", unsafe_allow_html=True)
     st.image(logo, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
