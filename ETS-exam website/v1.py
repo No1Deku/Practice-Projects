@@ -186,7 +186,7 @@ with tab_home:
     for s in steps:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
-    st.image("https://via.placeholder.com/800x400?text=Learning+Together", use_container_width=True)
+    st.image("tutorial.jpg", use_container_width=True)
     st.markdown('<div class="footer">© 2025 TeachToEach • Peer-Led Learning Platform</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------------
