@@ -17,7 +17,6 @@ def get_img_as_base64(file_path: str) -> str | None:
             return base64.b64encode(f.read()).decode()
     return None
 
-
 # ----------------------------------------------------
 # COLOUR PALETTE
 # ----------------------------------------------------
@@ -40,15 +39,16 @@ st.markdown(f"""
         font-family: 'Poppins', sans-serif;
         color: {TEXT_BODY};
     }}
+
     .stApp {{
         background: {BACKGROUND_STYLE};
     }}
 
-    /* Animation for header text */
+    /* Animation for headers */
     @keyframes fadeSlideIn {{
         0% {{
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(25px);
         }}
         100% {{
             opacity: 1;
@@ -56,22 +56,14 @@ st.markdown(f"""
         }}
     }}
 
-    /* Gold Header with Animation */
-    .gold-header {{
-        color: {HEADER_GOLD};
+    /* All headers large text in gold */
+    h1, h2, h3, h4 {{
+        color: {HEADER_GOLD} !important;
         font-weight: 700;
-        font-size: 28px;
         animation: fadeSlideIn 1s ease-out forwards;
     }}
 
-    /* Subheader animation (optional slight delay) */
-    .gold-subheader {{
-        color: {HEADER_GOLD};
-        font-weight: 600;
-        font-size: 22px;
-        animation: fadeSlideIn 1.2s ease-out forwards;
-    }}
-
+    /* Paragraph styling */
     p {{
         color: {TEXT_BODY};
         font-size: 16px;
@@ -164,24 +156,24 @@ with tab_home:
         if logo_base64:
             st.markdown(f"<img src='data:image/png;base64,{logo_base64}' width='200'>", unsafe_allow_html=True)
     with col2:
-        st.markdown(f"""
-        <h1 class='gold-header'>Welcome to TeachToEach</h1>
+        st.markdown("""
+        <h1>Welcome to TeachToEach</h1>
         <p>Peer-Led Professional Classes: Empowering Students to Teach & Learn from Each Other.</p>
         """, unsafe_allow_html=True)
 
     st.write("---")
-    st.markdown("<h2 class='gold-subheader'>Why Choose Us</h2>", unsafe_allow_html=True)
+    st.markdown("<h2>Why Choose Us</h2>", unsafe_allow_html=True)
 
     colA, colB, colC = st.columns(3)
     with colA:
-        st.markdown(f"<div class='card'><h4>Affordable</h4><p>Low-cost peer tutoring designed for student budgets.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h4>Affordable</h4><p>Low-cost peer tutoring designed for student budgets.</p></div>", unsafe_allow_html=True)
     with colB:
-        st.markdown(f"<div class='card'><h4>Flexible</h4><p>Learn online or in-person at times that suit your schedule.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h4>Flexible</h4><p>Learn online or in-person at times that suit your schedule.</p></div>", unsafe_allow_html=True)
     with colC:
-        st.markdown(f"<div class='card'><h4>Earn & Grow</h4><p>Students can share their skills and earn as verified tutors.</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='card'><h4>Earn & Grow</h4><p>Students can share their skills and earn as verified tutors.</p></div>", unsafe_allow_html=True)
 
     st.write("---")
-    st.markdown("<h2 class='gold-subheader'>How to Get Started</h2>", unsafe_allow_html=True)
+    st.markdown("<h2>How to Get Started</h2>", unsafe_allow_html=True)
     steps = [
         "1️⃣ Download the TeachToEach App",
         "2️⃣ Sign Up and Create Your Account",
@@ -199,7 +191,7 @@ with tab_home:
 # COURSES & TRAINING TAB
 # ----------------------------------------------------
 with tab_courses:
-    st.markdown("<h2 class='gold-header'>Courses & Training</h2>", unsafe_allow_html=True)
+    st.markdown("<h2>Courses & Training</h2>", unsafe_allow_html=True)
     st.markdown("<p>Explore our range of tailored learning experiences.</p>", unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
@@ -226,7 +218,7 @@ with tab_courses:
 # CONTACT TAB
 # ----------------------------------------------------
 with tab_contact:
-    st.markdown("<h2 class='gold-header'>Contact Us</h2>", unsafe_allow_html=True)
+    st.markdown("<h2>Contact Us</h2>", unsafe_allow_html=True)
     st.markdown("<p>We’d love to hear from you! Reach out or leave feedback below.</p>", unsafe_allow_html=True)
 
     st.markdown("""
@@ -237,7 +229,7 @@ with tab_contact:
     """)
     st.write("---")
 
-    st.markdown("<h3 class='gold-subheader'>Leave Us a Review</h3>", unsafe_allow_html=True)
+    st.markdown("<h3>Leave Us a Review</h3>", unsafe_allow_html=True)
     name = st.text_input("Your Name")
     email = st.text_input("Your Email")
     feedback = st.text_area("Your Review")
