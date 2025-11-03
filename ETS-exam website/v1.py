@@ -127,7 +127,7 @@ logo_base64 = get_img_as_base64(logo_path)
 # ----------------------------------------------------
 # NAVIGATION BAR AS TABS
 # ----------------------------------------------------
-tab_home, tab_courses, tab_contact = st.tabs(["🏠 Home", "📘 Courses & Training", "📞 Contact"])
+tab_home, tab_courses, tab_contact = st.tabs(["Home", "Courses & Training", "Contact"])
 
 
 # ----------------------------------------------------
