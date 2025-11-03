@@ -26,7 +26,8 @@ BG_DARK1 = "#8C8C8C"
 BG_DARK2 = "#262626"
 BG_DARK3 = "#0D0D0D"
 CARD_COLOR = "#2E2E2E"
-CARD_HOVER = HEADER_GOLD
+CARD_HOVER = "#3A3A3A"  # refined dark hover background
+CARD_HOVER_GRADIENT = f"linear-gradient(135deg, #3A3A3A, #504A3A, #C1A25F)"
 BACKGROUND_STYLE = f"linear-gradient(135deg, {BG_DARK3}, {BG_DARK2}, {BG_DARK1});"
 
 # ----------------------------------------------------
@@ -108,9 +109,10 @@ st.markdown(f"""
         transition: 0.3s;
     }}
 
+    /* Refined hover: subtle gradient + maintain text contrast */
     .card:hover {{
-        background-color: {CARD_HOVER};
-        color: black;
+        background: {CARD_HOVER_GRADIENT};
+        color: {TEXT_BODY};
         transform: translateY(-6px);
         box-shadow: 0px 6px 20px rgba(0,0,0,0.6);
     }}
