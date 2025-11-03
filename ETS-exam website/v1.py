@@ -21,15 +21,14 @@ def get_img_as_base64(file_path: str) -> str | None:
 # ----------------------------------------------------
 # COLOUR PALETTE
 # ----------------------------------------------------
-HEADER_GOLD = "#F2D8A7"      # Gold for headers and text
-TEXT_BODY = "#F2F2F2"        # Light for normal text
+HEADER_GOLD = "#F2D8A7"      # Gold for headers and navigation text
+TEXT_BODY = "#F2F2F2"        # Light body text
 BG_DARK1 = "#8C8C8C"
 BG_DARK2 = "#262626"
 BG_DARK3 = "#0D0D0D"
 
-CARD_COLOR = "#2E2E2E"       # Neutral deep gray for cue cards
-CARD_HOVER = HEADER_GOLD     # Gold on hover for interactivity
-
+CARD_COLOR = "#2E2E2E"       # Deep neutral gray for cards
+CARD_HOVER = HEADER_GOLD     # Gold on hover
 BACKGROUND_STYLE = f"linear-gradient(135deg, {BG_DARK3}, {BG_DARK2}, {BG_DARK1});"
 
 # ----------------------------------------------------
@@ -58,8 +57,9 @@ st.markdown(f"""
         font-size: 16px;
     }}
 
-    /* Tab container and text colour */
+    /* Tabs - Navigation Bar */
     div[data-baseweb="tab-list"] {{
+        display: flex;
         justify-content: space-between;
         padding: 8px 20%;
         background: transparent;
@@ -70,12 +70,19 @@ st.markdown(f"""
         font-weight: 600;
         font-size: 17px;
         border-radius: 8px;
+        transition: all 0.3s ease;
+    }}
+
+    div[data-baseweb="tab"]:hover {{
+        text-shadow: 0 0 8px {HEADER_GOLD};
+        transform: translateY(-2px);
     }}
 
     div[data-baseweb="tab"][aria-selected="true"] {{
         background-color: {HEADER_GOLD} !important;
         color: black !important;
         font-weight: 700;
+        text-shadow: none;
     }}
 
     /* Cards */
@@ -114,7 +121,7 @@ st.markdown(f"""
         box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }}
 
-    /* Custom header styles for gold text emphasis */
+    /* Custom header for gold text emphasis */
     .gold-header {{
         color: {HEADER_GOLD};
         font-weight: 700;
@@ -130,11 +137,10 @@ st.markdown(f"""
 logo_path = "ETS-exam website/Logo.png"
 logo_base64 = get_img_as_base64(logo_path)
 
-
 # ----------------------------------------------------
 # NAVIGATION BAR AS TABS
 # ----------------------------------------------------
-tab_home, tab_courses, tab_contact = st.tabs(["Home", "Courses & Training", "Contact"])
+tab_home, tab_courses, tab_contact = st.tabs(["🏠 Home", "📘 Courses & Training", "📞 Contact"])
 
 
 # ----------------------------------------------------
