@@ -21,14 +21,13 @@ def get_img_as_base64(file_path: str) -> str | None:
 # ----------------------------------------------------
 # COLOUR PALETTE
 # ----------------------------------------------------
-HEADER_GOLD = "#F2D8A7"      # Gold for headers and navigation text
-TEXT_BODY = "#F2F2F2"        # Light body text
+HEADER_GOLD = "#F2D8A7"
+TEXT_BODY = "#F2F2F2"
 BG_DARK1 = "#8C8C8C"
 BG_DARK2 = "#262626"
 BG_DARK3 = "#0D0D0D"
-
-CARD_COLOR = "#2E2E2E"       # Deep neutral gray for cards
-CARD_HOVER = HEADER_GOLD     # Gold on hover
+CARD_COLOR = "#2E2E2E"
+CARD_HOVER = HEADER_GOLD
 BACKGROUND_STYLE = f"linear-gradient(135deg, {BG_DARK3}, {BG_DARK2}, {BG_DARK1});"
 
 # ----------------------------------------------------
@@ -41,15 +40,36 @@ st.markdown(f"""
         font-family: 'Poppins', sans-serif;
         color: {TEXT_BODY};
     }}
-
     .stApp {{
         background: {BACKGROUND_STYLE};
     }}
 
-    /* Headers */
-    h1, h2, h3, h4 {{
+    /* Animation for header text */
+    @keyframes fadeSlideIn {{
+        0% {{
+            opacity: 0;
+            transform: translateY(30px);
+        }}
+        100% {{
+            opacity: 1;
+            transform: translateY(0);
+        }}
+    }}
+
+    /* Gold Header with Animation */
+    .gold-header {{
         color: {HEADER_GOLD};
         font-weight: 700;
+        font-size: 28px;
+        animation: fadeSlideIn 1s ease-out forwards;
+    }}
+
+    /* Subheader animation (optional slight delay) */
+    .gold-subheader {{
+        color: {HEADER_GOLD};
+        font-weight: 600;
+        font-size: 22px;
+        animation: fadeSlideIn 1.2s ease-out forwards;
     }}
 
     p {{
@@ -120,16 +140,8 @@ st.markdown(f"""
         margin-bottom: 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }}
-
-    /* Custom header for gold text emphasis */
-    .gold-header {{
-        color: {HEADER_GOLD};
-        font-weight: 700;
-        font-size: 28px;
-    }}
 </style>
 """, unsafe_allow_html=True)
-
 
 # ----------------------------------------------------
 # LOGO
@@ -141,7 +153,6 @@ logo_base64 = get_img_as_base64(logo_path)
 # NAVIGATION BAR AS TABS
 # ----------------------------------------------------
 tab_home, tab_courses, tab_contact = st.tabs(["Home", "Courses & Training", "Contact"])
-
 
 # ----------------------------------------------------
 # HOME TAB
@@ -159,9 +170,8 @@ with tab_home:
         """, unsafe_allow_html=True)
 
     st.write("---")
+    st.markdown("<h2 class='gold-subheader'>Why Choose Us</h2>", unsafe_allow_html=True)
 
-    # Visual Cue Cards
-    st.markdown("<h2 class='gold-header'>Why Choose Us</h2>", unsafe_allow_html=True)
     colA, colB, colC = st.columns(3)
     with colA:
         st.markdown(f"<div class='card'><h4>Affordable</h4><p>Low-cost peer tutoring designed for student budgets.</p></div>", unsafe_allow_html=True)
@@ -171,9 +181,7 @@ with tab_home:
         st.markdown(f"<div class='card'><h4>Earn & Grow</h4><p>Students can share their skills and earn as verified tutors.</p></div>", unsafe_allow_html=True)
 
     st.write("---")
-
-    # Step-by-step signup process
-    st.markdown("<h2 class='gold-header'>How to Get Started</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='gold-subheader'>How to Get Started</h2>", unsafe_allow_html=True)
     steps = [
         "1️⃣ Download the TeachToEach App",
         "2️⃣ Sign Up and Create Your Account",
@@ -184,10 +192,8 @@ with tab_home:
     for s in steps:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
-    st.write("")
     st.image("https://via.placeholder.com/800x400?text=Learning+Together", use_container_width=True)
     st.markdown('<div class="footer">© 2025 TeachToEach • Peer-Led Learning Platform</div>', unsafe_allow_html=True)
-
 
 # ----------------------------------------------------
 # COURSES & TRAINING TAB
@@ -216,7 +222,6 @@ with tab_courses:
 
     st.markdown('<div class="footer">Grow, Learn, and Succeed with TeachToEach</div>', unsafe_allow_html=True)
 
-
 # ----------------------------------------------------
 # CONTACT TAB
 # ----------------------------------------------------
@@ -224,18 +229,15 @@ with tab_contact:
     st.markdown("<h2 class='gold-header'>Contact Us</h2>", unsafe_allow_html=True)
     st.markdown("<p>We’d love to hear from you! Reach out or leave feedback below.</p>", unsafe_allow_html=True)
 
-    # Contact Info
     st.markdown("""
     **Phone:** +1 234 567 890  
     **Email:** contact@teachtoeach.com  
     **Website:** [www.teachtoeach.com](https://www.teachtoeach.com)  
     **WhatsApp:** +1 234 567 890
     """)
-
     st.write("---")
 
-    # Review Form (stacked vertically)
-    st.markdown("<h3 class='gold-header'>Leave Us a Review</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 class='gold-subheader'>Leave Us a Review</h3>", unsafe_allow_html=True)
     name = st.text_input("Your Name")
     email = st.text_input("Your Email")
     feedback = st.text_area("Your Review")
@@ -244,5 +246,4 @@ with tab_contact:
             st.success("✅ Thank you for your feedback! We appreciate your time.")
         else:
             st.warning("Please fill in your name and review before submitting.")
-
     st.markdown('<div class="footer">We appreciate your time and feedback 🌟</div>', unsafe_allow_html=True)
