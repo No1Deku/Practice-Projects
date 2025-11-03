@@ -113,6 +113,13 @@ st.markdown(f"""
         margin-bottom: 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }}
+
+    /* Custom header styles for gold text emphasis */
+    .gold-header {{
+        color: {HEADER_GOLD};
+        font-weight: 700;
+        font-size: 28px;
+    }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -141,14 +148,14 @@ with tab_home:
             st.markdown(f"<img src='data:image/png;base64,{logo_base64}' width='200'>", unsafe_allow_html=True)
     with col2:
         st.markdown(f"""
-        <h1>Welcome to TeachToEach</h1>
+        <h1 class='gold-header'>Welcome to TeachToEach</h1>
         <p>Peer-Led Professional Classes: Empowering Students to Teach & Learn from Each Other.</p>
         """, unsafe_allow_html=True)
 
     st.write("---")
 
     # Visual Cue Cards
-    st.markdown("### Why Choose Us")
+    st.markdown("<h2 class='gold-header'>Why Choose Us</h2>", unsafe_allow_html=True)
     colA, colB, colC = st.columns(3)
     with colA:
         st.markdown(f"<div class='card'><h4>Affordable</h4><p>Low-cost peer tutoring designed for student budgets.</p></div>", unsafe_allow_html=True)
@@ -160,7 +167,7 @@ with tab_home:
     st.write("---")
 
     # Step-by-step signup process
-    st.markdown("### How to Get Started")
+    st.markdown("<h2 class='gold-header'>How to Get Started</h2>", unsafe_allow_html=True)
     steps = [
         "1️⃣ Download the TeachToEach App",
         "2️⃣ Sign Up and Create Your Account",
@@ -180,7 +187,7 @@ with tab_home:
 # COURSES & TRAINING TAB
 # ----------------------------------------------------
 with tab_courses:
-    st.markdown("<h2>Courses & Training</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='gold-header'>Courses & Training</h2>", unsafe_allow_html=True)
     st.markdown("<p>Explore our range of tailored learning experiences.</p>", unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
@@ -208,7 +215,7 @@ with tab_courses:
 # CONTACT TAB
 # ----------------------------------------------------
 with tab_contact:
-    st.markdown("<h2>Contact Us</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='gold-header'>Contact Us</h2>", unsafe_allow_html=True)
     st.markdown("<p>We’d love to hear from you! Reach out or leave feedback below.</p>", unsafe_allow_html=True)
 
     # Contact Info
@@ -222,7 +229,7 @@ with tab_contact:
     st.write("---")
 
     # Review Form (stacked vertically)
-    st.markdown("### Leave Us a Review")
+    st.markdown("<h3 class='gold-header'>Leave Us a Review</h3>", unsafe_allow_html=True)
     name = st.text_input("Your Name")
     email = st.text_input("Your Email")
     feedback = st.text_area("Your Review")
