@@ -26,6 +26,7 @@ BG_DARK1 = "#8C8C8C"
 BG_DARK2 = "#262626"
 BG_DARK3 = "#0D0D0D"
 CARD_COLOR = "#2E2E2E"
+CARD_HOVER = "#3A3A3A"  # refined dark hover background
 CARD_HOVER_GRADIENT = f"linear-gradient(135deg, #3A3A3A, #504A3A, #C1A25F)"
 BACKGROUND_STYLE = f"linear-gradient(135deg, {BG_DARK3}, {BG_DARK2}, {BG_DARK1});"
 
@@ -185,9 +186,7 @@ with tab_home:
     for s in steps:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
-    # 🖼️ Show tutorial image directly after steps
-    st.image("tutorial.jpg", caption="Your Learning Journey with TeachToEach", use_container_width=True)
-
+    st.image("https://via.placeholder.com/800x400?text=Learning+Together", use_container_width=True)
     st.markdown('<div class="footer">© 2025 TeachToEach • Peer-Led Learning Platform</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------------
@@ -224,7 +223,6 @@ with tab_contact:
     st.markdown("<h2>Contact Us</h2>", unsafe_allow_html=True)
     st.markdown("<p>We’d love to hear from you! Reach out or leave feedback below.</p>", unsafe_allow_html=True)
 
-    # Contact info displayed top-to-bottom
     st.markdown("""
     **Phone:** +1 234 567 890  
     **Email:** contact@teachtoeach.com  
