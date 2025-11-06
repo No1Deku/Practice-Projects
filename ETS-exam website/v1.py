@@ -186,7 +186,7 @@ with tab_home:
     for s in steps:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
-    st.image("https://via.placeholder.com/800x400?text=Learning+Together", use_container_width=True)
+    st.image("background_1.jpg", use_container_width=True)
     st.markdown('<div class="footer">© 2025 TeachToEach • Peer-Led Learning Platform</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------------
@@ -198,9 +198,9 @@ with tab_courses:
 
     col1, col2, col3 = st.columns(3)
     courses = [
-        {"name": "Data Analysis for Beginners", "tutor": "John Smith", "price": "$150", "mode": "Online"},
-        {"name": "Creative Design Masterclass", "tutor": "Lisa Adams", "price": "$200", "mode": "Hybrid"},
-        {"name": "Entrepreneurship Essentials", "tutor": "Michael Lee", "price": "$180", "mode": "In-Person"},
+        {"name": "Data Analysis for Beginners", "tutor": "Ntando Nkuna", "price": "R150", "mode": "Online"},
+        {"name": "Creative Design Masterclass", "tutor": "Luyanda Msiza", "price": "R200", "mode": "Hybrid"},
+        {"name": "Entrepreneurship Essentials", "tutor": "Hlamulo Magwaza", "price": "R180", "mode": "In-Person"},
     ]
 
     for col, c in zip([col1, col2, col3], courses):
@@ -224,10 +224,10 @@ with tab_contact:
     st.markdown("<p>We’d love to hear from you! Reach out or leave feedback below.</p>", unsafe_allow_html=True)
 
     st.markdown("""
-    **Phone:** +1 234 567 890  
+    **Phone:** +27687603568
     **Email:** contact@teachtoeach.com  
     **Website:** [www.teachtoeach.com](https://www.teachtoeach.com)  
-    **WhatsApp:** +1 234 567 890
+    **WhatsApp:** +27687603568
     """)
     st.write("---")
 
