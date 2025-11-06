@@ -177,12 +177,24 @@ with tab_home:
     for s in steps:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
-    # ✅ FIXED BACKGROUND IMAGE PATH
-    bg_path = "ETS-exam website/tutorial.jpg"
-    if os.path.exists(bg_path):
-        st.image(bg_path, use_container_width=True)
+    # ----------------------------------------------------
+    # ✅ TUTORIAL IMAGE WITH REDUCED SIZE
+    # ----------------------------------------------------
+    tutorial_path = "ETS-exam website/tutorial.jpg"
+
+    if os.path.exists(tutorial_path):
+        tutorial_base64 = get_img_as_base64(tutorial_path)
+        st.markdown(
+            f"""
+            <div style="text-align:center;">
+                <img src="data:image/jpg;base64,{tutorial_base64}" 
+                     style="width:70%; max-width:700px; border-radius:15px; margin-top:20px;">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     else:
-        st.warning("Background image not found: ETS-exam website/background_1.jpg")
+        st.warning("Tutorial image not found: ETS-exam website/tutorial.jpg")
 
     st.markdown('<div class="footer">© 2025 TeachToEach • Peer-Led Learning Platform</div>', unsafe_allow_html=True)
 
