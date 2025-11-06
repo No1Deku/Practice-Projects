@@ -178,7 +178,7 @@ with tab_home:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
     # ✅ FIXED BACKGROUND IMAGE PATH
-    bg_path = "ETS-exam website/background_1.jpg"
+    bg_path = "ETS-exam website/tutorial.jpg"
     if os.path.exists(bg_path):
         st.image(bg_path, use_container_width=True)
     else:
