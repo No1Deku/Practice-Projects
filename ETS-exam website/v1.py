@@ -26,7 +26,7 @@ BG_DARK1 = "#8C8C8C"
 BG_DARK2 = "#262626"
 BG_DARK3 = "#0D0D0D"
 CARD_COLOR = "#2E2E2E"
-CARD_HOVER = "#3A3A3A"  # refined dark hover background
+CARD_HOVER = "#3A3A3A"
 CARD_HOVER_GRADIENT = f"linear-gradient(135deg, #3A3A3A, #504A3A, #C1A25F)"
 BACKGROUND_STYLE = f"linear-gradient(135deg, {BG_DARK3}, {BG_DARK2}, {BG_DARK1});"
 
@@ -45,32 +45,22 @@ st.markdown(f"""
         background: {BACKGROUND_STYLE};
     }}
 
-    /* Animation for headers */
     @keyframes fadeSlideIn {{
-        0% {{
-            opacity: 0;
-            transform: translateY(25px);
-        }}
-        100% {{
-            opacity: 1;
-            transform: translateY(0);
-        }}
+        0% {{ opacity: 0; transform: translateY(25px); }}
+        100% {{ opacity: 1; transform: translateY(0); }}
     }}
 
-    /* All headers large text in gold */
     h1, h2, h3, h4 {{
         color: {HEADER_GOLD} !important;
         font-weight: 700;
         animation: fadeSlideIn 1s ease-out forwards;
     }}
 
-    /* Paragraph styling */
     p {{
         color: {TEXT_BODY};
         font-size: 16px;
     }}
 
-    /* Tabs - Navigation Bar */
     div[data-baseweb="tab-list"] {{
         display: flex;
         justify-content: space-between;
@@ -98,7 +88,6 @@ st.markdown(f"""
         text-shadow: none;
     }}
 
-    /* Cards */
     .card {{
         background-color: {CARD_COLOR};
         color: {TEXT_BODY};
@@ -109,7 +98,6 @@ st.markdown(f"""
         transition: 0.3s;
     }}
 
-    /* Refined hover: subtle gradient + maintain text contrast */
     .card:hover {{
         background: {CARD_HOVER_GRADIENT};
         color: {TEXT_BODY};
@@ -117,7 +105,6 @@ st.markdown(f"""
         box-shadow: 0px 6px 20px rgba(0,0,0,0.6);
     }}
 
-    /* Footer */
     .footer {{
         margin-top: 50px;
         text-align: center;
@@ -126,7 +113,6 @@ st.markdown(f"""
         color: {TEXT_BODY};
     }}
 
-    /* Step bullets */
     .step {{
         background-color: {CARD_COLOR};
         padding: 12px 20px;
@@ -138,7 +124,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------
-# LOGO
+# LOGO (Corrected Path)
 # ----------------------------------------------------
 logo_path = "ETS-exam website/Logo.png"
 logo_base64 = get_img_as_base64(logo_path)
@@ -154,9 +140,13 @@ tab_home, tab_courses, tab_contact = st.tabs(["Home", "Courses & Training", "Con
 with tab_home:
     st.write("")
     col1, col2 = st.columns([1.2, 2])
+    
     with col1:
         if logo_base64:
             st.markdown(f"<img src='data:image/png;base64,{logo_base64}' width='200'>", unsafe_allow_html=True)
+        else:
+            st.warning("Logo not found: ETS-exam website/Logo.png")
+
     with col2:
         st.markdown("""
         <h1>Welcome to TeachToEach</h1>
@@ -176,6 +166,7 @@ with tab_home:
 
     st.write("---")
     st.markdown("<h2>How to Get Started</h2>", unsafe_allow_html=True)
+
     steps = [
         "1️⃣ Download the TeachToEach App",
         "2️⃣ Sign Up and Create Your Account",
@@ -186,7 +177,13 @@ with tab_home:
     for s in steps:
         st.markdown(f"<div class='step'>{s}</div>", unsafe_allow_html=True)
 
-    st.image("background_1.jpg", use_container_width=True)
+    # ✅ FIXED BACKGROUND IMAGE PATH
+    bg_path = "ETS-exam website/background_1.jpg"
+    if os.path.exists(bg_path):
+        st.image(bg_path, use_container_width=True)
+    else:
+        st.warning("Background image not found: ETS-exam website/background_1.jpg")
+
     st.markdown('<div class="footer">© 2025 TeachToEach • Peer-Led Learning Platform</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------------
@@ -224,20 +221,23 @@ with tab_contact:
     st.markdown("<p>We’d love to hear from you! Reach out or leave feedback below.</p>", unsafe_allow_html=True)
 
     st.markdown("""
-    **Phone:** +27687603568
+    **Phone:** +27687603568  
     **Email:** contact@teachtoeach.com  
     **Website:** [www.teachtoeach.com](https://www.teachtoeach.com)  
     **WhatsApp:** +27687603568
     """)
+
     st.write("---")
 
     st.markdown("<h3>Leave Us a Review</h3>", unsafe_allow_html=True)
     name = st.text_input("Your Name")
     email = st.text_input("Your Email")
     feedback = st.text_area("Your Review")
+
     if st.button("Submit Feedback"):
         if name and feedback:
             st.success("✅ Thank you for your feedback! We appreciate your time.")
         else:
             st.warning("Please fill in your name and review before submitting.")
+
     st.markdown('<div class="footer">We appreciate your time and feedback 🌟</div>', unsafe_allow_html=True)
